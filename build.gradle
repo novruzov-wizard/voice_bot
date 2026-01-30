@@ -1,29 +1,38 @@
 plugins {
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.3'
 	id 'java'
-	id 'org.springframework.boot' version '4.0.2'
-	id 'io.spring.dependency-management' version '1.1.7'
 }
 
-group = 'com.voice'
-version = '0.0.1-SNAPSHOT'
-description = 'Demo project for Spring Boot'
-
-java {
-	toolchain {
-		languageVersion = JavaLanguageVersion.of(21)
-	}
-}
+group = 'com.voicebot'
+version = '1.0.0'
+sourceCompatibility = '21'
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
+	// Spring Boot
 	implementation 'org.springframework.boot:spring-boot-starter'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	// Telegram bot libraries
+	implementation 'org.telegram:telegrambots:6.9.7.0'
+	implementation 'org.telegram:telegrambots-meta:6.9.7.0'
 }
 
-tasks.named('test') {
-	useJUnitPlatform()
+tasks.withType(JavaCompile).configureEach {
+	options.encoding = 'UTF-8'
+}
+
+// Jar configuration
+tasks.named('jar') {
+	enabled = true
+	archiveBaseName.set('voice-bot')
+	archiveVersion.set('1.0.0')
+}
+
+tasks.named('bootJar') {
+	archiveBaseName.set('voice-bot')
+	archiveVersion.set('1.0.0')
 }

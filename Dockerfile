@@ -19,6 +19,8 @@ RUN apt-get update \
 # Copy the built jar
 COPY --from=builder /app/build/libs/*.jar /app/app.jar
 
+COPY transcribe.py /app/transcribe.py
+
 # Optional: make sure work dir exists (your Java writes to "work/")
 RUN mkdir -p /app/work
 

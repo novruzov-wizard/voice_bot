@@ -17,7 +17,7 @@ public class VoiceBot extends TelegramLongPollingBot {
 
     private static final String PYTHON_CMD = System.getenv().getOrDefault("PYTHON_CMD", "python3");
     private static final String TRANSCRIBE_SCRIPT =
-            System.getenv().getOrDefault("TRANSCRIBE_SCRIPT", "transcribe.py"); // keep beside your jar or give full path
+            System.getenv().getOrDefault("TRANSCRIBE_SCRIPT", "/app/transcribe.py"); // keep beside your jar or give full path
 
     @Override
     public String getBotUsername() {

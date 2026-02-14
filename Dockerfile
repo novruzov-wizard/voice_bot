@@ -28,6 +28,6 @@ RUN mkdir -p /app/work
 
 # Optional env vars (matches the Java code I sent earlier)
 ENV PYTHON_CMD=python3
-ENV TRANSCRIBE_SCRIPT=/app/transcribe.py
+ENV TRANSCRIBE_SCRIPT=/transcribe.py
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]

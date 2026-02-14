@@ -19,15 +19,10 @@ RUN apt-get update \
 # Copy the built jar
 COPY --from=builder /app/build/libs/*.jar /app/app.jar
 
-# ✅ Copy your transcribe.py into the container
-# Put transcribe.py in your repo root or adjust the path below
-COPY transcribe.py /app/transcribe.py
-
 # Optional: make sure work dir exists (your Java writes to "work/")
 RUN mkdir -p /app/work
 
 # Optional env vars (matches the Java code I sent earlier)
 ENV PYTHON_CMD=python3
-ENV TRANSCRIBE_SCRIPT=/transcribe.py
 
 ENTRYPOINT ["java", "-jar", "/app/app.jar"]
